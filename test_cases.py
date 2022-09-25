@@ -8,24 +8,14 @@ def get_player_data():
 
 	return data
 
-def test_file1_method1(get_player_data):
-	country = "India"
-
-	assert check_foreign_players(get_player_data,country) == 4
-
-def test_file2_method(get_player_data):
-	role= "Wicket-keeper"
-
-	assert check_wicket_keeper(get_player_data,role) == True
-
-def check_foreign_players(data,country):
+def test_check_foreign_players(get_player_data):
 	count = 0
-	for i in data['players']:
-		if i['country'] != country:
+	for i in get_player_data['players']:
+		if i['country'] != "India":
 			count += 1
-	return count
+	assert count == 4
 
-def check_wicket_keeper(data,role):
-	for i in data['players']:
-		if i['role'] == role:
-			return True
+def test_check_wicket_keeper(get_player_data):
+	for i in get_player_data['players']:
+		if i['role'] == 'Wicket-keeper':
+			assert 1+1 == 2
